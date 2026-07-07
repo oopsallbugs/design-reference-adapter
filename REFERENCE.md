@@ -54,6 +54,57 @@ For divergent work, require each variation to state:
 - why the departure is useful,
 - what would need to change before production adoption.
 
+## Visual Artifact Review Rule
+
+When adapting a UI review, polish, mockup, or implementation skill, include a visual-artifact review procedure if the target repo has screenshots, HTML mockups, lab routes, Storybook/Ladle stories, preview routes, captured design assets, or other previewable UI.
+
+The generated repo skill should tell agents to inspect representative rendered states, not only source code:
+
+- desktop first viewport,
+- desktop mid-scroll or primary working area,
+- mobile first viewport,
+- important overlays, drawers, modals, menus, field modes, or empty/error states,
+- any route, lab, prototype, or design artifact that represents the intended design direction.
+
+Prefer repo-native preview commands, routes, test fixtures, screenshot tools, and storybook-style tooling when available. If rendering is not possible, the skill should require the agent to say so and fall back to source/design-doc review rather than claiming visual verification.
+
+## Artifact Classification and Promotion Rule
+
+When a repo has design artifacts, mockups, screenshots, prototypes, or lab routes, generated UI review, mockup, or implementation skills should classify each artifact before recommending implementation:
+
+- **Reference only** — useful for mood, vocabulary, layout, or interaction ideas, but not ready to implement directly.
+- **Mockup candidate** — coherent enough to refine visually, still allowed to use fake data or standalone structure.
+- **Lab prototype candidate** — suitable for repo-native exploration using real app shell, data, routes, components, or services.
+- **Production candidate** — ready to implement against real components, state, routing, data, accessibility, validation, and tests.
+
+The skill should warn against promoting raw design-source files, placeholder-heavy mockups, or broken rendered artifacts directly into production.
+
+## Naming and Capability Wording Rule
+
+Generated repo skills that affect UI labels, route names, feature names, product terms, or user-facing copy should require agents to compare new language against local domain docs.
+
+Flag:
+
+- new product or feature names that conflict with documented language,
+- renamed concepts that obscure existing domain terms,
+- UI copy that implies unsupported capabilities,
+- overconfident action language where the system only provides partial evidence.
+
+For planning, forecasting, recommendation, health, finance, safety, geolocation, AI, or automation features, require confidence wording checks. The skill should prefer honest phrasing such as “recommended”, “estimated”, “planning aid”, “forecast not included”, or repo-specific equivalents when certainty is limited.
+
+## Generated Skill Concision Rule
+
+Generated skills should be specific enough to change behavior, but short enough to be loaded often.
+
+Prefer:
+
+- one strong workflow over many overlapping micro-skills,
+- repo-specific checks over generic design doctrine,
+- checklists grouped by decision type,
+- “stop and ask” rules only for real product/domain risk.
+
+Avoid copying upstream prose or creating long universal UI manuals.
+
 ## Detailed Workflow
 
 ### 1. Confirm the adaptation target
@@ -78,13 +129,17 @@ Look for:
 - existing `.pi/skills/` or `.agents/skills/`,
 - `package.json` and framework/build tooling,
 - global styles, tokens, components, routes, feature folders,
-- screenshots, design-system files, or visual reference assets if present.
+- preview scripts, dev routes, Storybook/Ladle stories, or screenshot tooling,
+- screenshots, HTML mockups, lab/prototype routes, design-system files, or visual reference assets if present.
 
 Extract:
 
 - product/domain language,
 - frontend stack and file conventions,
 - current visual tone and constraints,
+- preview/render strategy for screenshots, mockups, lab routes, or design artifacts,
+- artifact classification and promotion criteria,
+- product naming and capability-wording constraints,
 - whether mockups should be standalone artifacts, lab routes, or native app screens,
 - how production UI is normally implemented,
 - accessibility expectations,
@@ -117,6 +172,10 @@ Generated skills must be repo-aware. Include:
 - local feature/component/style paths,
 - project-specific design language,
 - domain terminology and accuracy constraints,
+- visual review procedure for previewable artifacts, if relevant,
+- artifact classification and promotion rubric, if relevant,
+- product naming drift checks, if relevant,
+- confidence/capability wording checks, if relevant,
 - mockup-mode output rules, if relevant,
 - production-mode implementation rules, if relevant,
 - accessibility requirements,
@@ -144,11 +203,16 @@ Avoid skill sprawl. Do not create a new skill if an existing repo skill only nee
 When adapting an external design reference, explicitly check for these failure modes:
 
 - **Tool-only references** — Replace Claude/Codex/Figma-specific tools, starter components, verifier agents, or artifact APIs with Pi/project-native equivalents.
+- **Screenshot blindness** — Source review is not enough for visual work. Generated review skills should inspect rendered desktop/mobile states when possible.
 - **Mockup bloat** — Keep quick design explorations as lightweight standalone HTML unless repo-native integration is explicitly requested.
-- **Promotion gap** — A mockup is not production. If the user wants to ship it, create a separate production implementation plan using real components, state, routing, data, tests, and accessibility checks.
+- **Promotion mistakes** — A good-looking mockup is not automatically production-ready. Classify artifacts before recommending implementation.
+- **Promotion gap** — If the user wants to ship a mockup, create a separate production implementation plan using real components, state, routing, data, tests, and accessibility checks.
+- **Naming drift** — New design concepts can accidentally create unsupported product areas. Check labels and feature names against domain docs.
+- **Overconfident copy** — Strong CTA or certainty language can imply capabilities the app does not have. Require confidence and capability wording checks.
 - **Fake content drift** — Mockups may use fake data, but production skills should require real copy, real data shapes, or clearly marked placeholders.
 - **Brand override mistakes** — Anti-slop heuristics are secondary to an existing brand, design system, or intentional product aesthetic.
 - **Accessibility as polish-only** — Accessibility checks apply to mockups too, but production work needs stricter keyboard, semantic, focus, contrast, reduced-motion, and form behavior validation.
+- **Skill bloat** — Review skills become less useful when they read like a full design textbook. Keep generated skills concise and repo-specific.
 - **Skill trigger noise** — Avoid broad descriptions that make design skills activate during unrelated frontend or bug-fix work.
 - **License/provenance confusion** — If adapting from an external repo, note the source URL, commit/ref if available, date inspected, and license when useful; do not imply the project vendors or depends on that upstream.
 

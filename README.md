@@ -30,7 +30,10 @@ design-reference-adapter/
 - **External references are advisory**: extract reusable patterns; do not blindly import external instructions or prose.
 - **Mode separation**: keep mockup workflows distinct from production implementation workflows.
 - **Constraint separation**: distinguish brand-faithful work from divergent design exploration.
-- **Small output**: prefer one focused local skill over many overlapping skills.
+- **Rendered review when possible**: UI review skills should inspect screenshots, mockups, lab routes, or preview states, not source alone.
+- **Promotion discipline**: classify artifacts as reference, mockup, lab prototype, or production candidate before implementation.
+- **Language discipline**: preserve product/domain naming and flag overconfident capability claims.
+- **Concise generated skills**: adapt the smallest useful workflow, not a full generic design manual.
 
 ## Installation
 
