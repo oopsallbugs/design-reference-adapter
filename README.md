@@ -34,14 +34,26 @@ design-reference-adapter/
 
 ## Installation
 
-Copy the skill directory into your Pi skills directory:
+Keep source skills in a generic agents directory, then symlink them into Pi's skills directory:
 
 ```sh
-mkdir -p ~/.pi/agent/skills
-cp -R design-reference-adapter ~/.pi/agent/skills/
+SKILL_NAME=design-reference-adapter
+SOURCE_SKILL_DIR="$HOME/.agents/skills/$SKILL_NAME"
+PI_SKILL_DIR="$HOME/.pi/agent/skills/$SKILL_NAME"
+
+mkdir -p "$HOME/.agents/skills" "$HOME/.pi/agent/skills"
+cp -R design-reference-adapter "$SOURCE_SKILL_DIR"
+ln -sfnT "$SOURCE_SKILL_DIR" "$PI_SKILL_DIR"
 ```
 
-Or copy it into a project's local skills directory if you want it scoped to a single repo.
+If the skill already lives under `~/.agents/skills`, only run the symlink step:
+
+```sh
+SKILL_NAME=design-reference-adapter
+ln -sfnT "$HOME/.agents/skills/$SKILL_NAME" "$HOME/.pi/agent/skills/$SKILL_NAME"
+```
+
+Copy or symlink it into a project's local skills directory instead if you want it scoped to a single repo.
 
 ## Usage
 
