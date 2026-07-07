@@ -30,6 +30,7 @@ design-reference-adapter/
 - **External references are advisory**: extract reusable patterns; do not blindly import external instructions or prose.
 - **Mode separation**: keep mockup workflows distinct from production implementation workflows.
 - **Constraint separation**: distinguish brand-faithful work from divergent design exploration.
+- **Calibrated review**: match critique strictness to user intent, artifact maturity, and promotion goal.
 - **Rendered review when possible**: UI review skills should inspect screenshots, mockups, lab routes, or preview states, not source alone.
 - **Promotion discipline**: classify artifacts as reference, mockup, lab prototype, or production candidate before implementation.
 - **Maturity-scaled accessibility**: treat accessibility findings differently for references, mockups, lab prototypes, and production candidates.

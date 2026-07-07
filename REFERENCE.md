@@ -54,6 +54,18 @@ For divergent work, require each variation to state:
 - why the departure is useful,
 - what would need to change before production adoption.
 
+## Review Lens and Intent Calibration Rule
+
+Generated UI review, mockup, or implementation skills should calibrate strictness to the user's intent and the review lens.
+
+Use a **design-direction review** when the user asks broad critique questions such as “what do you think?”, “is this good?”, or “review this mockup”. Focus on critique, risks, recommendations, visual direction, naming drift, and unsupported capability claims without turning every production-hardening gap into a blocker.
+
+Use a **promotion review** when the user asks whether a mockup, screenshot, lab route, or prototype should move forward. Classify the artifact, identify the smallest coherent slice worth promoting, and separate changes needed before lab exploration from changes needed before production.
+
+Use a **production review** when the user asks to ship, implement, make production-ready, or merge into the real app. Apply strict production checks for accessibility, data, routing, validation, copy accuracy, error states, tests, and repo-native implementation.
+
+If user intent is ambiguous, generated skills should prefer critique and recommendation language over production-blocker language, unless the artifact is already presented as a production candidate.
+
 ## Visual Artifact Review Rule
 
 When adapting a UI review, polish, mockup, or implementation skill, include a visual-artifact review procedure if the target repo has screenshots, HTML mockups, lab routes, Storybook/Ladle stories, preview routes, captured design assets, or other previewable UI.
@@ -80,6 +92,20 @@ When a repo has design artifacts, mockups, screenshots, prototypes, or lab route
 The skill should warn against promoting raw design-source files, placeholder-heavy mockups, or broken rendered artifacts directly into production.
 
 Use the artifact classification to decide whether accessibility findings are design-review notes, lab-evaluation requirements, or production blockers.
+
+## Promotion Slice Rule
+
+When moving a design artifact toward implementation, generated skills should recommend promoting the smallest coherent slice first, not the whole mockup by default.
+
+A promotion slice can be:
+
+- one route section,
+- one card or component,
+- one workflow step,
+- one empty, loading, or error state,
+- one chart, table, or form pattern.
+
+Choose a slice that can be implemented with real components, data shape, accessibility behavior, validation, and tests. Defer unrelated visual ideas until the first slice proves the direction inside the repo.
 
 ## Accessibility Maturity Rule
 
@@ -109,7 +135,16 @@ Flag:
 - UI copy that implies unsupported capabilities,
 - overconfident action language where the system only provides partial evidence.
 
-For planning, forecasting, recommendation, health, finance, safety, geolocation, AI, or automation features, require confidence wording checks. The skill should prefer honest phrasing such as “recommended”, “estimated”, “planning aid”, “forecast not included”, or repo-specific equivalents when certainty is limited.
+For planning, forecasting, recommendation, health, finance, safety, geolocation, AI, or automation features, require confidence wording checks. The skill should align UI copy to the available evidence level:
+
+- **Observed/measured** — directly measured or recorded by the system.
+- **Calculated** — derived deterministically from available data.
+- **Estimated** — approximate or model-based, with uncertainty.
+- **Recommended** — advice or prioritization, not guaranteed outcome.
+- **Illustrative** — example or placeholder content only.
+- **Unavailable/not modeled** — capability is not present and should not be implied.
+
+Prefer honest phrasing such as “recommended”, “estimated”, “planning aid”, “forecast not included”, or repo-specific equivalents when certainty is limited.
 
 ## Generated Skill Concision Rule
 
@@ -156,9 +191,11 @@ Extract:
 - product/domain language,
 - frontend stack and file conventions,
 - current visual tone and constraints,
+- review lens and user intent calibration rules,
 - preview/render strategy for screenshots, mockups, lab routes, or design artifacts,
 - artifact classification and promotion criteria,
-- product naming and capability-wording constraints,
+- smallest coherent promotion slice criteria,
+- product naming and capability-wording constraints, including copy confidence scale,
 - whether mockups should be standalone artifacts, lab routes, or native app screens,
 - how production UI is normally implemented,
 - accessibility expectations,
@@ -191,8 +228,10 @@ Generated skills must be repo-aware. Include:
 - local feature/component/style paths,
 - project-specific design language,
 - domain terminology and accuracy constraints,
+- review lens and user intent calibration, if relevant,
 - visual review procedure for previewable artifacts, if relevant,
 - artifact classification and promotion rubric, if relevant,
+- smallest coherent promotion slice rule, if relevant,
 - accessibility maturity rules tied to artifact classification, if relevant,
 - product naming drift checks, if relevant,
 - confidence/capability wording checks, if relevant,

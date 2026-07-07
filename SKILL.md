@@ -63,8 +63,10 @@ Before drafting local skills, separate these modes:
 
 When generating UI review, polish, mockup, or implementation skills, include repo-aware checks for:
 
+- review strictness calibrated to user intent and review lens,
 - screenshot or rendered-artifact review at desktop and mobile sizes when previewable,
 - artifact classification: reference-only, mockup candidate, lab prototype candidate, or production candidate,
+- smallest coherent promotion slice before whole-artifact implementation,
 - accessibility severity scaled by artifact classification,
 - product/domain naming drift against local docs,
 - overconfident UX wording for uncertain capabilities,
