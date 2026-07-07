@@ -20,7 +20,7 @@ Do **not** use it for ordinary UI implementation, polish passes, accessibility f
 ```txt
 design-reference-adapter/
 ├── README.md      # Project overview and usage
-├── SKILL.md       # Pi skill entrypoint and activation rules
+├── SKILL.md       # Skill entrypoint and activation rules
 └── REFERENCE.md   # Detailed adaptation workflow, guardrails, and templates
 ```
 
@@ -60,7 +60,7 @@ Copy or symlink it into a project's local skills directory instead if you want i
 
 ## Usage
 
-Ask Pi to create, adapt, refresh, or compare a repo-specific design skill. For example:
+Ask an agent to create, adapt, refresh, or compare a repo-specific design skill. For example:
 
 ```txt
 Use the design-reference-adapter skill to adapt this external design checklist into a local UI polish skill for this repo.
