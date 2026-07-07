@@ -146,6 +146,19 @@ For planning, forecasting, recommendation, health, finance, safety, geolocation,
 
 Prefer honest phrasing such as “recommended”, “estimated”, “planning aid”, “forecast not included”, or repo-specific equivalents when certainty is limited.
 
+## Evidence Label Rule
+
+Generated UI review skills should label important findings by evidence source:
+
+- **Rendered evidence** — observed in preview, screenshot, browser, or route.
+- **Source evidence** — found in code, HTML, CSS, or template structure.
+- **Domain-doc evidence** — based on local docs such as `CONTEXT.md`, ADRs, product specs, or repo skills.
+- **Judgment call** — design/product recommendation without hard proof.
+
+Use evidence labels for major recommendations, product risks, artifact classification, accessibility severity decisions, and promotion advice. Do not over-label every tiny note.
+
+Evidence labels should explain where the finding came from; they do not replace artifact classification, review lens, severity, or user-intent calibration.
+
 ## Generated Skill Concision Rule
 
 Generated skills should be specific enough to change behavior, but short enough to be loaded often.
@@ -235,6 +248,7 @@ Generated skills must be repo-aware. Include:
 - accessibility maturity rules tied to artifact classification, if relevant,
 - product naming drift checks, if relevant,
 - confidence/capability wording checks, if relevant,
+- evidence labels for major findings and promotion advice, if relevant,
 - mockup-mode output rules, if relevant,
 - production-mode implementation rules, if relevant,
 - accessibility requirements,

@@ -70,6 +70,7 @@ When generating UI review, polish, mockup, or implementation skills, include rep
 - accessibility severity scaled by artifact classification,
 - product/domain naming drift against local docs,
 - overconfident UX wording for uncertain capabilities,
+- evidence labels for major findings and promotion advice,
 - concise generated skills that avoid bloated generic checklists.
 
 ### General Guardrails

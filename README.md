@@ -35,6 +35,7 @@ design-reference-adapter/
 - **Promotion discipline**: classify artifacts as reference, mockup, lab prototype, or production candidate before implementation.
 - **Maturity-scaled accessibility**: treat accessibility findings differently for references, mockups, lab prototypes, and production candidates.
 - **Language discipline**: preserve product/domain naming and flag overconfident capability claims.
+- **Evidence-aware reviews**: label major findings as rendered, source, domain-doc, or judgment-call evidence.
 - **Concise generated skills**: adapt the smallest useful workflow, not a full generic design manual.
 
 ## Installation
