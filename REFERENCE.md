@@ -79,6 +79,25 @@ When a repo has design artifacts, mockups, screenshots, prototypes, or lab route
 
 The skill should warn against promoting raw design-source files, placeholder-heavy mockups, or broken rendered artifacts directly into production.
 
+Use the artifact classification to decide whether accessibility findings are design-review notes, lab-evaluation requirements, or production blockers.
+
+## Accessibility Maturity Rule
+
+Generated UI review, mockup, or implementation skills should scale accessibility expectations by artifact classification.
+
+For **reference-only** or **mockup-candidate** artifacts:
+
+- Treat missing document title, imperfect heading hierarchy, placeholder ARIA, incomplete labels, and missing chart text alternatives as production-hardening notes unless they prevent reviewing the design.
+- Still flag readability, contrast, misleading copy, naming drift, broken layout, and unsupported capability claims.
+
+For **lab-prototype candidates**:
+
+- Require enough semantics, labels, focus behavior, and keyboard support to enable realistic in-browser evaluation.
+
+For **production candidates**:
+
+- Treat accessibility semantics, labels, focus behavior, keyboard behavior, chart alternatives, document title, and heading structure as blockers.
+
 ## Naming and Capability Wording Rule
 
 Generated repo skills that affect UI labels, route names, feature names, product terms, or user-facing copy should require agents to compare new language against local domain docs.
@@ -174,6 +193,7 @@ Generated skills must be repo-aware. Include:
 - domain terminology and accuracy constraints,
 - visual review procedure for previewable artifacts, if relevant,
 - artifact classification and promotion rubric, if relevant,
+- accessibility maturity rules tied to artifact classification, if relevant,
 - product naming drift checks, if relevant,
 - confidence/capability wording checks, if relevant,
 - mockup-mode output rules, if relevant,

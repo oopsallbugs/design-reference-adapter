@@ -32,6 +32,7 @@ design-reference-adapter/
 - **Constraint separation**: distinguish brand-faithful work from divergent design exploration.
 - **Rendered review when possible**: UI review skills should inspect screenshots, mockups, lab routes, or preview states, not source alone.
 - **Promotion discipline**: classify artifacts as reference, mockup, lab prototype, or production candidate before implementation.
+- **Maturity-scaled accessibility**: treat accessibility findings differently for references, mockups, lab prototypes, and production candidates.
 - **Language discipline**: preserve product/domain naming and flag overconfident capability claims.
 - **Concise generated skills**: adapt the smallest useful workflow, not a full generic design manual.
 

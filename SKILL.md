@@ -65,6 +65,7 @@ When generating UI review, polish, mockup, or implementation skills, include rep
 
 - screenshot or rendered-artifact review at desktop and mobile sizes when previewable,
 - artifact classification: reference-only, mockup candidate, lab prototype candidate, or production candidate,
+- accessibility severity scaled by artifact classification,
 - product/domain naming drift against local docs,
 - overconfident UX wording for uncertain capabilities,
 - concise generated skills that avoid bloated generic checklists.
